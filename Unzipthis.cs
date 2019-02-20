@@ -17,19 +17,21 @@ namespace AzUnzipEverything
         {
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
 
-            string destinationConn = Environment.GetEnvironmentVariable("destinationStorage");
+            string destinationStorage = Environment.GetEnvironmentVariable("destinationStorage");
+            string destinationContainer = Environment.GetEnvironmentVariable("destinationContainer");
 
             try{
                 if(name.Split('.').Last().ToLower() == "zip"){
 
                     ZipArchive archive = new ZipArchive(myBlob);
-                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(destinationConn);
+
+                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(destinationStorage);
                     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                    CloudBlobContainer container = blobClient.GetContainerReference("output-files");
+                    CloudBlobContainer container = blobClient.GetContainerReference(destinationContainer);
 
                     foreach (ZipArchiveEntry entry in archive.Entries)
                     {
-                        log.LogInformation($"processing {entry.FullName}");
+                        log.LogInformation($"Now processing {entry.FullName}");
 
                         CloudBlockBlob blockBlob = container.GetBlockBlobReference(entry.Name);
                         using (var fileStream = entry.Open())
@@ -40,7 +42,7 @@ namespace AzUnzipEverything
                 }
             }
             catch(Exception ex){
-                log.LogInformation($"nooooo!!! - {ex.Message}");
+                log.LogInformation($"Error! Something went wrong: {ex.Message}");
 
             }            
         }
