@@ -19,3 +19,9 @@ I also have a video where I build and test the function.
 ](https://img.youtube.com/vi/GRztpy337kU/0.jpg)](https://www.youtube.com/watch?v=GRztpy337kU)
   
 https://youtu.be/GRztpy337kU
+
+I also have an extended version where I introduce more the Visual Studio Extension to work with Azure Function. And explain more details about the Azure Function V2.
+
+[![Deploy an Azure Function V2 (to unzip automatically your files) with Visual Studio Code
+](https://img.youtube.com/vi/t9PvXWEzU-o/0.jpg)](https://www.youtube.com/watch?v=t9PvXWEzU-o)
+https://youtu.be/t9PvXWEzU-o
