@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
@@ -13,7 +14,7 @@ namespace AzUnzipEverything
     public static class Unzipthis
     {
         [FunctionName("Unzipthis")]
-        public static void Run([BlobTrigger("input-files/{name}", Connection = "cloud5mins_storage")]Stream myBlob, string name, ILogger log)
+        public static async Task Run([BlobTrigger("input-files/{name}", Connection = "cloud5mins_storage")]Stream myBlob, string name, ILogger log)
         {
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
 
@@ -36,7 +37,7 @@ namespace AzUnzipEverything
                         CloudBlockBlob blockBlob = container.GetBlockBlobReference(entry.Name);
                         using (var fileStream = entry.Open())
                         {
-                            blockBlob.UploadFromStreamAsync(fileStream);
+                            await blockBlob.UploadFromStreamAsync(fileStream);
                         }
                     }
                 }
