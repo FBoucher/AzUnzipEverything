@@ -4,6 +4,12 @@
     "parameters": {
         "baseName": {
             "value": "UnzipEverything"
+        },
+        "GitHubBranch": {
+            "value": "master"
+        },
+        "MonitorStorageName": {
+            "value": "dropzone"
         }
     }
 }
