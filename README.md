@@ -5,6 +5,8 @@ This current version only supports ".zip"
 
 ### TODOs
 
+A GitKraken [Glo board](https://app.gitkraken.com/glo/board/XRYx_9FgZwAVbri7) is also available.
+
 - [ ] Add Support for .rar
 - [ ] Add ARM template
 - [ ] Add a Deploy to Azure button
@@ -24,4 +26,5 @@ I also have an extended version where I introduce more the Visual Studio Extensi
 
 [![Deploy an Azure Function V2 (to unzip automatically your files) with Visual Studio Code
 ](https://img.youtube.com/vi/t9PvXWEzU-o/0.jpg)](https://www.youtube.com/watch?v=t9PvXWEzU-o)
+
 https://youtu.be/t9PvXWEzU-o
