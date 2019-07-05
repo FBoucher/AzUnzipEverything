@@ -1,18 +1,25 @@
 # AzUnzipEverything
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FFBoucher%2FAzUnzipEverything%2Farm-template%2Fdeployment%2FdeployAzure.json?WT.mc_id=cloud5mins-github-frbouche" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
-
 A simple Azure Function to Unzip files from a blob storage to another one
 
 This current version only supports ".zip"
+
+## How to deploy
+
+To deploy all the resources in your Azure subscription, just click on the **Deploy to Azure** button.
+
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FFBoucher%2FAzUnzipEverything%2Fmaster%2Fdeployment%2FdeployAzure.json?WT.mc_id=cloud5mins-github-frbouche" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+
+If you don't own an Azure subscription already, you can create your **free** account today. It comes with 200$ credit, so you can experience almost everything without spending a dime. 
+[Create your free Azure account today](https://azure.microsoft.com/en-us/free?WT.mc_id=tohack-github-frbouche)
 
 ### TODOs
 
 A GitKraken [Glo board](https://app.gitkraken.com/glo/board/XRYx_9FgZwAVbri7) is also available.
 
 - [ ] Add Support for .rar
-- [ ] Add ARM template
-- [ ] Add a Deploy to Azure button
+- [X] Add ARM template
+- [X] Add a Deploy to Azure button
 
 ### More details
 

@@ -6,7 +6,7 @@
             "defaultValue": "UnzipEverything",
             "type": "string",
             "metadata": {
-                "description": "Base name of the resources depoloed to Azure"
+                "description": "Name use as base-template to named the resources deployed in Azure."
             }
         },
         "GitHubBranch": {
