@@ -19,14 +19,6 @@ Learn more on [how to deploy you Azure Function automatically or using the Azure
 
 ![CreationForm][CreationForm]
 
-
-
-## Continuous Integration (CI)
-
-As you can see by the status badge [![Build Status](https://dev.azure.com/cloud5mins/AzUnzipEverything/_apis/build/status/FBoucher.AzUnzipEverything?branchName=master)](https://dev.azure.com/cloud5mins/AzUnzipEverything/_build/latest?definitionId=23&branchName=master) at the top of the page this project is automatically build at every push. 
-
-Have a look, the [Azure DevOps](https://dev.azure.com/cloud5mins/AzUnzipEverything/) project is **public**! 
-
 ## How to use it.
 
 You can upload files to an Azure Blob storage using many different tool and code, but for this quick introduction let's use the Azure Portal.
@@ -46,9 +38,24 @@ Once [deployed](https://github.com/FBoucher/AzUnzipEverything#how-to-deploy), op
 
 1. After a few second the files you be Unzipped into the blob storage **output-files**.
 
-### More! 
 
-You can do so much more with the [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/?WT.mc_id=cloud5mins-github-frbouche)! Don't hesitate to consult the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/azure-functions/?WT.mc_id=cloud5mins-github-frbouche) to learn all the different scenarios, best practices, and code snippets.
+## Continuous Integration (CI)
+
+As you can see by the status badge [![Build Status](https://dev.azure.com/cloud5mins/AzUnzipEverything/_apis/build/status/FBoucher.AzUnzipEverything?branchName=master)](https://dev.azure.com/cloud5mins/AzUnzipEverything/_build/latest?definitionId=23&branchName=master) at the top of the page this project is automatically build at every push. 
+
+Have a look, the [Azure DevOps](https://dev.azure.com/cloud5mins/AzUnzipEverything/) project is **public**! 
+
+
+### Create a Continuous Integration, Continuous Deployment (CI-CD) for your Azure Function
+
+In this video, I show you how to write an Azure Resource Manager (#ARM) template to deploy automatically your serverless Azure Function to Azure. It can be then used with a "Deploy to Azure" button from GitHub or any website, or in an Azure Pipeline to complete a Continuous Integration, Continuous Deployment (CI-CD) solution.
+
+[![FunctionCICD][FunctionCICD]](https://www.youtube.com/watch?v=GRztpy337kU)
+
+
+There is also a **written version** if you prefer reading: http://www.frankysnotes.com/2019/07/four-ways-to-deploy-your-azure-function.html
+
+
 
 ## TODOs
 
@@ -64,19 +71,19 @@ I have a [blob post](https://www.frankysnotes.com/2019/02/how-to-unzip-automatic
 
 I also have a video where I build and test the function.
 
-[![Unzip Automatically Files with Azure Function v2
-](https://img.youtube.com/vi/GRztpy337kU/0.jpg)](https://www.youtube.com/watch?v=GRztpy337kU)
+[![Auto-UnzipFunction_YT][Auto-UnzipFunction_YT]](https://www.youtube.com/watch?v=GRztpy337kU)
   
-https://youtu.be/GRztpy337kU
 
 I also have an extended version where I introduce more the Visual Studio Extension to work with Azure Function. And explain more details about the Azure Function V2.
 
-[![Deploy an Azure Function V2 (to unzip automatically your files) with Visual Studio Code
-](https://img.youtube.com/vi/t9PvXWEzU-o/0.jpg)](https://www.youtube.com/watch?v=t9PvXWEzU-o)
+[![AzureFunctionWithVSCode_YT][AzureFunctionWithVSCode_YT]](https://www.youtube.com/watch?v=t9PvXWEzU-o)
 
-https://youtu.be/t9PvXWEzU-o
+
 
 
 [CreationForm]: /medias/CreationForm.png "Creation Form"
 [resourceGroup]: /medias/resourceGroup.png "Select the ResourceGroup"
 [uploadFile]: /medias/uploadFile.png "Upload Zip file"
+[FunctionCICD]: /medias/AzureFunctionCICD_YT.png "YouTube thumbnail"
+[Auto-UnzipFunction_YT]: /medias/Auto-UnzipFunction_YT.png "YouTube thumbnail"
+[AzureFunctionWithVSCode_YT]: /medias/AzureFunctionWithVSCode_YT.png "YouTube thumbnail"
