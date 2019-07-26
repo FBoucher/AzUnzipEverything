@@ -11,12 +11,12 @@
     "activityBar.inactiveForeground": "#15202b99",
     "activityBarBadge.background": "#d46bc2",
     "activityBarBadge.foreground": "#15202b",
-    "titleBar.activeBackground": "#7ecad9",
-    "titleBar.inactiveBackground": "#7ecad999",
+    "titleBar.activeBackground": "#7dcada",
+    "titleBar.inactiveBackground": "#7dcada99",
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveForeground": "#15202b99",
-    "statusBar.background": "#7ecad9",
-    "statusBarItem.hoverBackground": "#57bacd",
+    "statusBar.background": "#7dcada",
+    "statusBarItem.hoverBackground": "#55bacf",
     "statusBar.foreground": "#15202b"
   }
 }
