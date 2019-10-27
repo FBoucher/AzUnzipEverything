@@ -88,10 +88,14 @@ Want to contribute? Check out our [Code of Conduct](CODE_OF_CONDUCT.md) and [Con
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 
-
 [CreationForm]: /medias/CreationForm.png "Creation Form"
 [resourceGroup]: /medias/resourceGroup.png "Select the ResourceGroup"
 [uploadFile]: /medias/uploadFile.png "Upload Zip file"
 [FunctionCICD]: /medias/AzureFunctionCICD_YT.png "YouTube thumbnail"
 [Auto-UnzipFunction_YT]: /medias/Auto-UnzipFunction_YT.png "YouTube thumbnail"
 [AzureFunctionWithVSCode_YT]: /medias/AzureFunctionWithVSCode_YT.png "YouTube thumbnail"
+
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+
