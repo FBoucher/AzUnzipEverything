@@ -1,60 +1,38 @@
-using System;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using AzUnzipEverything.Abstractions;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace AzUnzipEverything
 {
-    public static class Unzipthis
+    public class Unzipthis
     {
-        [FunctionName("Unzipthis")]
-        public static async Task Run([BlobTrigger("input-files/{name}", Connection = "cloud5mins_storage")]CloudBlockBlob myBlob, string name, ILogger log)
+        private readonly IFileProcessor _fileProcessor;
+        private readonly ILogger<Unzipthis> _logger;
+
+        public Unzipthis(IFileProcessor fileProcessor, ILogger<Unzipthis> logger)
         {
-            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name}");
+            _fileProcessor = fileProcessor;
+            _logger = logger;
+        }
 
-            string destinationStorage = Environment.GetEnvironmentVariable("destinationStorage");
-            string destinationContainer = Environment.GetEnvironmentVariable("destinationContainer");
+        [FunctionName("Unzipthis")]
+        public async Task Run([BlobTrigger("input-files/{name}", Connection = "cloud5mins_storage")] Stream myBlob, string name)
+        {
+            _logger.LogInformation($"C# Blob trigger function Processing blob\n Name:{name}");
 
-            try{
-                if(name.Split('.').Last().ToLower() == "zip"){
-
-                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(destinationStorage);
-                    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                    CloudBlobContainer container = blobClient.GetContainerReference(destinationContainer);
-                    
-                    using(MemoryStream blobMemStream = new MemoryStream()){
-
-                        await myBlob.DownloadToStreamAsync(blobMemStream);
-
-                        using(ZipArchive archive = new ZipArchive(blobMemStream))
-                        {
-                            foreach (ZipArchiveEntry entry in archive.Entries)
-                            {
-                                log.LogInformation($"Now processing {entry.FullName}");
-
-                                //Replace all NO digits, letters, or "-" by a "-" Azure storage is specific on valid characters
-                                string valideName = Regex.Replace(entry.Name,@"[^a-zA-Z0-9\-]","-").ToLower();
-
-                                CloudBlockBlob blockBlob = container.GetBlockBlobReference(valideName);
-                                using (var fileStream = entry.Open())
-                                {
-                                    await blockBlob.UploadFromStreamAsync(fileStream);
-                                }
-                            }
-                        }
-                    }
-                }
+            try
+            {
+                await _fileProcessor.ProcessFile(myBlob);
+                _logger.LogInformation("C# Blob trigger function Processed blob\n Name:{name}");
             }
-            catch(Exception ex){
-                log.LogInformation($"Error! Something went wrong: {ex.Message}");
-
-            }            
+            catch (Exception ex)
+            {
+                _logger.LogInformation("Something went wrong while processing {blobName}, Error: {exception}", name,
+                    ex.Message);
+            }
         }
     }
 }
