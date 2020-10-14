@@ -1,4 +1,5 @@
-﻿using AzUnzipEverything.Abstractions;
+﻿using System;
+using AzUnzipEverything.Abstractions;
 using AzUnzipEverything.Infrastructure.Settings;
 using Ionic.Zip;
 using Microsoft.Extensions.Logging;
@@ -7,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.Azure.Storage;
 
 namespace AzUnzipEverything.Implementations
 {
@@ -39,6 +41,8 @@ namespace AzUnzipEverything.Implementations
                     }
 
                     _logger.LogInformation($"Now processing {zipEntry.FileName}");
+
+                    NameValidator.ValidateBlobName(zipEntry.FileName);
 
                     //Replace all NO digits, letters, or "-" by a "-" Azure storage is specific on valid characters
                     var validName = Regex.Replace(zipEntry.FileName, @"[^a-zA-Z0-9\-.]", "-").ToLower();

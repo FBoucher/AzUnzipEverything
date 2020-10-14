@@ -28,6 +28,11 @@ namespace AzUnzipEverything
                 await _fileProcessor.ProcessFile(myBlob);
                 _logger.LogInformation("C# Blob trigger function Processed blob\n Name:{name}");
             }
+            catch (ArgumentException aex)
+            {
+                _logger.LogInformation("Something went wrong while processing {blobName}, Error: {exception}", name,
+                    aex.Message);
+            }
             catch (Exception ex)
             {
                 _logger.LogInformation("Something went wrong while processing {blobName}, Error: {exception}", name,
