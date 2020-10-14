@@ -44,10 +44,7 @@ namespace AzUnzipEverything.Implementations
 
                     NameValidator.ValidateBlobName(zipEntry.FileName);
 
-                    //Replace all NO digits, letters, or "-" by a "-" Azure storage is specific on valid characters
-                    var validName = Regex.Replace(zipEntry.FileName, @"[^a-zA-Z0-9\-.]", "-").ToLower();
-
-                    var blockBlob = _destinationContainer.GetBlockBlobReference(validName);
+                    var blockBlob = _destinationContainer.GetBlockBlobReference(zipEntry.FileName);
                     await using var fileStream = zipEntry.OpenReader();
                     await blockBlob.UploadFromStreamAsync(fileStream);
 
