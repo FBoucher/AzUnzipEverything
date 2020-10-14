@@ -123,7 +123,7 @@
       },
       "resources": [
         {
-          "apiVersion": "2015-08-01",
+          "apiVersion": "2020-06-01",
           "name": "web",
           "type": "sourcecontrols",
           "dependsOn": [
@@ -225,23 +225,23 @@
           }
         ],
         "resources": [
-          {
-            "type": "Microsoft.KeyVault/vaults/secrets",
-            "apiVersion": "2016-10-01",
-            "name": "ZipPassword",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-              "[resourceId('Microsoft.KeyVault/vaults', variables('KeyVaultName'))]"
-            ],
-            "properties": {
-              "value": "[parameters('PasswordForZips')]"
-            }
-          }
         ],
         "sku": {
           "name": "[parameters('KeyVaultSkuName')]",
           "family": "A"
         }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2016-10-01",
+      "name": "[concat(variables('KeyVaultName'), '/ZipPassword')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('KeyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[parameters('PasswordForZips')]"
       }
     }
   ],
