@@ -2,7 +2,7 @@
   "azureFunctions.projectRuntime": "~2",
   "azureFunctions.projectLanguage": "C#",
   "azureFunctions.templateFilter": "Verified",
-  "azureFunctions.deploySubpath": "bin/Release/netcoreapp2.1/publish",
+  "azureFunctions.deploySubpath": "bin/Release/netcoreapp3.1/publish",
   "azureFunctions.preDeployTask": "publish",
   "debug.internalConsoleOptions": "neverOpen",
   "workbench.colorCustomizations": {
@@ -17,6 +17,9 @@
     "titleBar.inactiveForeground": "#15202b99",
     "statusBar.background": "#7dcada",
     "statusBarItem.hoverBackground": "#55bacf",
-    "statusBar.foreground": "#15202b"
-  }
+    "statusBar.foreground": "#15202b",
+    "activityBar.activeBackground": "#a5dae5",
+    "activityBar.activeBorder": "#d46bc2"
+  },
+  "peacock.color": "#7dcada"
 }
