@@ -1,14 +1,12 @@
-﻿using System;
-using AzUnzipEverything.Abstractions;
+﻿using AzUnzipEverything.Abstractions;
 using AzUnzipEverything.Infrastructure.Settings;
 using Ionic.Zip;
+using Microsoft.Azure.Storage;
 using Microsoft.Extensions.Logging;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Microsoft.Azure.Storage;
 
 namespace AzUnzipEverything.Implementations
 {
