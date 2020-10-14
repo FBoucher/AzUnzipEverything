@@ -4,9 +4,13 @@
 
 # AzUnzipEverything
 
-A simple Azure Function to Unzip files from a blob storage to another one
+A simple Azure Function to Unzip files from a blob storage container to another one
 
-This current version only supports ".zip"
+The following features are supported in this current version:
+1. Supported Archive Types: .zip
+2. Password protetected zip files
+
+     *The current solution provisions an Azure KeyVault instance for storing the zip archive(s) password used during the unzipping process.  If password protected zip files are uploaded to the blob storage container, this would be the password used when attempting to un-zip the files into the destination storage container.**
 
 ## How to deploy
 
@@ -23,22 +27,22 @@ Learn more on [how to deploy you Azure Function automatically or using the Azure
 
 ## How to use it.
 
-You can upload files to an Azure Blob storage using many different tool and code, but for this quick introduction let's use the Azure Portal.
+You can upload files to an Azure Blob storage using many different tools and code, but for this quick introduction let's use the Azure Portal.
 
 Once [deployed](https://github.com/FBoucher/AzUnzipEverything#how-to-deploy), open the Azure portal [portal.azure.com](https://portal.azure.com?WT.mc_id=cloud5mins-youtube-frbouche)
 
-1. navigate the resource Group you just deployed (ex: demoAzUnzipEverything).
+1. navigate to the resource Group you just deployed (ex: demoAzUnzipEverything).
 
     ![resourceGroup][resourceGroup]
 
-1. Select the **Storage Account** that starts by "dropzone".
+1. Select the **Storage Account** whose name starts with "dropzone".
 1. Click on **Blobs**, in the middle of the screen.
-1. Click on the **input-files**. 
+1. Click on the **input-files** container. 
 1. Click on the Upload button, and you can now upload a zip file.
 
     ![uploadFile][uploadFile]
 
-1. After a few second the files you be Unzipped into the blob storage **output-files**.
+1. After a few second the files you uploaded will be Unzipped into the blob storage container **output-files**.
 
 
 ## Continuous Integration (CI)
