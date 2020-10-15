@@ -2,6 +2,7 @@ using AzUnzipEverything.Abstractions;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -9,12 +10,12 @@ namespace AzUnzipEverything
 {
     public class Unzipthis
     {
-        private readonly IFileProcessor _fileProcessor;
+        private readonly Dictionary<string, IFileProcessor> _fileProcessorMap;
         private readonly ILogger<Unzipthis> _logger;
 
-        public Unzipthis(IFileProcessor fileProcessor, ILogger<Unzipthis> logger)
+        public Unzipthis(Dictionary<string, IFileProcessor> fileProcessorMap, ILogger<Unzipthis> logger)
         {
-            _fileProcessor = fileProcessor;
+            _fileProcessorMap = fileProcessorMap;
             _logger = logger;
         }
 
@@ -25,7 +26,7 @@ namespace AzUnzipEverything
 
             try
             {
-                await _fileProcessor.ProcessFile(myBlob);
+                await _fileProcessorMap[Path.GetExtension(name)].ProcessFile(myBlob);
                 _logger.LogInformation("C# Blob trigger function Processed blob\n Name:{name}");
             }
             catch (ArgumentException aex)

@@ -7,7 +7,9 @@
 A simple Azure Function to Unzip files from a blob storage container to another one
 
 The following features are supported in this current version:
-1. Supported Archive Types: .zip
+1. Supported Archive Types: .zip, .rar
+     
+    *Archive support is currently implemented using the <a href="https://github.com/adamhathcock/sharpcompress">sharpcompress</a> library*
 2. Password protetected zip files
 
      *The current solution provisions an Azure KeyVault instance for storing the zip archive(s) password used during the unzipping process.  If password protected zip files are uploaded to the blob storage container, this would be the password used when attempting to un-zip the files into the destination storage container.**
