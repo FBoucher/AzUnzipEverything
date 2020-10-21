@@ -62,7 +62,7 @@
   },
   "resources": [
     {
-      "apiVersion": "2015-08-01",
+      "apiVersion": "2018-11-01",
       "type": "Microsoft.Web/sites",
       "name": "[variables('funcAppName')]",
       "location": "[resourceGroup().location]",
@@ -215,21 +215,33 @@
         "enabledForDiskEncryption": true,
         "enabledForTemplateDeployment": true,
         "tenantId": "[subscription().tenantId]",
-        "accessPolicies": [
-          {
-            "tenantId": "[reference(variables('website_resource_id'), '2018-11-30').tenantId]",
-            "objectId": "[reference(variables('website_resource_id'), '2018-11-30').principalId]",
-            "permissions": {
-              "secrets": "[parameters('KeyVaultSecretsPermissions')]"
-            }
-          }
-        ],
+        "accessPolicies": [],
         "resources": [
         ],
         "sku": {
           "name": "[parameters('KeyVaultSkuName')]",
           "family": "A"
         }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/accessPolicies",
+      "name": "[concat(variables('KeyVaultName'), '/add')]",
+      "apiVersion": "2018-02-14",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', variables('funcAppName'))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('KeyVaultName'))]"
+      ],
+      "properties": {
+        "accessPolicies": [
+          {
+            "tenantId": "[reference(resourceId('Microsoft.Web/sites', variables('funcAppName')), '2016-08-01', 'Full').identity.tenantId]",
+            "objectId": "[reference(resourceId('Microsoft.Web/sites', variables('funcAppName')), '2016-08-01', 'Full').identity.principalId]",
+            "permissions": {
+              "secrets": [ "list", "get" ]
+            }
+          }
+        ]
       }
     },
     {
