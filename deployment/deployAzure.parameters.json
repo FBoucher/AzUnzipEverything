@@ -5,10 +5,10 @@
         "baseName": {
             "value": "UnzipEverything"
         },
-        "GitRepository": {
+        "GitBranch": {
             "value": "master"
         },
-        "GitBranch":{
+        "GitRepository":{
             "value":"https://github.com/FBoucher/AzUnzipEverything.git"
         },
         "MonitorStorageName": {
