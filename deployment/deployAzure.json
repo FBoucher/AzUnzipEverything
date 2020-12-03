@@ -9,14 +9,14 @@
                 "description": "Name use as base-template to named the resources deployed in Azure."
             }
         },
-        "GitHubRepoUrl":{
+        "GitRepository":{
             "type": "string",
             "defaultValue": "https://github.com/FBoucher/AzUnzipEverything.git",
             "metadata": {
-                 "description": "Name of git hub repository to use when deploying (Default = https://github.com/FBoucher/AzUnzipEverything.git)."
+                 "description": "Name of git repository to use when deploying (Default = https://github.com/FBoucher/AzUnzipEverything.git)."
              } 
         },
-        "GitHubBranch": {
+        "GitBranch": {
            "type": "string",
            "defaultValue": "master",
            "metadata": {
@@ -101,8 +101,8 @@
                       "[resourceId('Microsoft.Web/sites/', variables('funcAppName'))]"
                     ],
                     "properties": {
-                        "RepoUrl": "[parameters('GitHubRepository')]",
-                        "branch": "[parameters('GitHubBranch')]",
+                        "RepoUrl": "[parameters('GitRepository')]",
+                        "branch": "[parameters('GitBranch')]",
                         "publishRunbook": true,
                         "IsManualIntegration": true
                     }
