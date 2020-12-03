@@ -15,7 +15,7 @@ namespace AzUnzipEverything
     {
         [FunctionName("Unzipthis")]
         public static async Task Run(
-            [BlobTrigger("input-files/{name}", Connection = "cloud5mins_storage")]CloudBlockBlob blob,            
+            [BlobTrigger("input-files/{name}", Connection = "cloud5mins_storage")]CloudBlockBlob blob,
             string name, 
             ILogger log)
         {
@@ -27,9 +27,16 @@ namespace AzUnzipEverything
                 log.LogInformation($"{name} is not a zip file");
                 return;           
             }
-                        
+
+            var destinationStorage = Environment.GetEnvironmentVariable("destinationStorage");
+            var destinationContainer = Environment.GetEnvironmentVariable("destinationContainer");
+         
             try
             {  
+                var storageAccount = CloudStorageAccount.Parse(destinationStorage);
+                var blobClient = storageAccount.CreateCloudBlobClient();
+                var container = blobClient.GetContainerReference(destinationContainer);
+
                 using(var sourceStream = await blob.OpenReadAsync())
                 {
                     using(var zipArchive = new ZipArchive(sourceStream))
@@ -37,8 +44,7 @@ namespace AzUnzipEverything
                         foreach(var zipArchiveEntry in zipArchive.Entries)
                         {
                             //Replace all NO digits, letters, or "-" by a "-" Azure storage is specific on valid characters
-                            var targetFileName = Regex.Replace(zipArchiveEntry.Name, @"[^a-zA-Z0-9\-]","-").ToLower();
-                            var container = blob.Container;
+                            var targetFileName = Regex.Replace(zipArchiveEntry.Name, @"[^a-zA-Z0-9\-]","-").ToLower();                            
                             var targetBlob = container.GetBlockBlobReference(targetFileName);
                             using(var sourceFileStream = zipArchiveEntry.Open())
                             {
