@@ -44,7 +44,7 @@ namespace AzUnzipEverything
                         foreach(var zipArchiveEntry in zipArchive.Entries)
                         {
                             //Replace all NO digits, letters, or "-" by a "-" Azure storage is specific on valid characters
-                            var targetFileName = Regex.Replace(zipArchiveEntry.Name, @"[^a-zA-Z0-9\-]","-").ToLower();                            
+                            var targetFileName = Regex.Replace(zipArchiveEntry.Name, @"[^a-zA-Z0-9\-.]","-").ToLower();                            
                             var targetBlob = container.GetBlockBlobReference(targetFileName);
                             using(var sourceFileStream = zipArchiveEntry.Open())
                             {
