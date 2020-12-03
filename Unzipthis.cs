@@ -14,38 +14,35 @@ namespace AzUnzipEverything
     public static class Unzipthis
     {
         [FunctionName("Unzipthis")]
-        public static async Task Run([BlobTrigger("input-files/{name}", Connection = "cloud5mins_storage")]CloudBlockBlob myBlob, string name, ILogger log)
+        public static async Task Run(
+            [BlobTrigger("input-files/{name}", Connection = "cloud5mins_storage")]CloudBlockBlob blob,            
+            string name, 
+            ILogger log)
         {
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name}");
-
-            string destinationStorage = Environment.GetEnvironmentVariable("destinationStorage");
-            string destinationContainer = Environment.GetEnvironmentVariable("destinationContainer");
-
-            try{
-                if(name.Split('.').Last().ToLower() == "zip"){
-
-                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(destinationStorage);
-                    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                    CloudBlobContainer container = blobClient.GetContainerReference(destinationContainer);
-                    
-                    using(MemoryStream blobMemStream = new MemoryStream()){
-
-                        await myBlob.DownloadToStreamAsync(blobMemStream);
-
-                        using(ZipArchive archive = new ZipArchive(blobMemStream))
+            
+            // Exit if not a zip file
+            if(name.Split('.').Last().ToLower() != "zip")
+            {
+                log.LogInformation($"{name} is not a zip file");
+                return;           
+            }
+                        
+            try
+            {  
+                using(var sourceStream = await blob.OpenReadAsync())
+                {
+                    using(var zipArchive = new ZipArchive(sourceStream))
+                    {
+                        foreach(var zipArchiveEntry in zipArchive.Entries)
                         {
-                            foreach (ZipArchiveEntry entry in archive.Entries)
+                            //Replace all NO digits, letters, or "-" by a "-" Azure storage is specific on valid characters
+                            var targetFileName = Regex.Replace(zipArchiveEntry.Name, @"[^a-zA-Z0-9\-]","-").ToLower();
+                            var container = blob.Container;
+                            var targetBlob = container.GetBlockBlobReference(targetFileName);
+                            using(var sourceFileStream = zipArchiveEntry.Open())
                             {
-                                log.LogInformation($"Now processing {entry.FullName}");
-
-                                //Replace all NO digits, letters, or "-" by a "-" Azure storage is specific on valid characters
-                                string valideName = Regex.Replace(entry.Name,@"[^a-zA-Z0-9\-]","-").ToLower();
-
-                                CloudBlockBlob blockBlob = container.GetBlockBlobReference(valideName);
-                                using (var fileStream = entry.Open())
-                                {
-                                    await blockBlob.UploadFromStreamAsync(fileStream);
-                                }
+                                await targetBlob.UploadFromStreamAsync(sourceFileStream);
                             }
                         }
                     }
