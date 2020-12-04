@@ -49,7 +49,7 @@ namespace AzUnzipEverything
 
                             using(var sourceFileStream = zipArchiveEntry.Open())
                             {
-                                log.LogInformation($"started extracting {zipArchiveEntry.Name} to {targetFileName}");
+                                log.LogInformation($"started extracting {zipArchiveEntry.Name} ({zipArchiveEntry.CompressedLength}) to {targetFileName} ({zipArchiveEntry.Length})");
                                 await targetBlob.UploadFromStreamAsync(sourceFileStream);
                                 log.LogInformation($"completed extracting {zipArchiveEntry.Name} to {targetFileName}");
                             }
