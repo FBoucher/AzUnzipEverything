@@ -2,7 +2,7 @@
 # Build and test ASP.NET Core projects targeting .NET Core.
 
 trigger:
-- master
+- main
 
 pool:
   vmImage: 'ubuntu-latest'

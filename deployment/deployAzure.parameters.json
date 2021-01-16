@@ -6,7 +6,7 @@
             "value": "UnzipEverything"
         },
         "GitHubBranch": {
-            "value": "master"
+            "value": "main"
         },
         "MonitorStorageName": {
             "value": "dropzone"
