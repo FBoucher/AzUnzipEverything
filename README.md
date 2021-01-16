@@ -103,11 +103,16 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://cloud5mins.com"><img src="https://avatars3.githubusercontent.com/u/2404846?v=4" width="100px;" alt="Frank Boucher"/><br /><sub><b>Frank Boucher</b></sub></a><br /><a href="https://github.com/FBoucher/AzUnzipEverything/commits?author=fboucher" title="Code">💻</a> <a href="#video-fboucher" title="Videos">📹</a> <a href="https://github.com/FBoucher/AzUnzipEverything/commits?author=fboucher" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://cloud5mins.com"><img src="https://avatars3.githubusercontent.com/u/2404846?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Frank Boucher</b></sub></a><br /><a href="https://github.com/FBoucher/AzUnzipEverything/commits?author=fboucher" title="Code">💻</a> <a href="#video-fboucher" title="Videos">📹</a> <a href="https://github.com/FBoucher/AzUnzipEverything/commits?author=fboucher" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mreyeros"><img src="https://avatars3.githubusercontent.com/u/964690?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Reyeros</b></sub></a><br /><a href="https://github.com/FBoucher/AzUnzipEverything/commits?author=mreyeros" title="Code">💻</a> <a href="#maintenance-mreyeros" title="Maintenance">🚧</a> <a href="https://github.com/FBoucher/AzUnzipEverything/pulls?q=is%3Apr+reviewed-by%3Amreyeros" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
