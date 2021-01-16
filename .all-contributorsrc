@@ -4,7 +4,7 @@
   ],
   "imageSize": 100,
   "contributorsPerLine": 7,
-  "skipCi": "true",
+  "skipCi": true,
   "projectName": "AzUnzipEverything",
   "projectOwner": "FBoucher",
   "repoType": "github",
@@ -19,6 +19,17 @@
         "code",
         "video",
         "doc"
+      ]
+    },
+    {
+      "login": "mreyeros",
+      "name": "Michael Reyeros",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/964690?v=4",
+      "profile": "https://github.com/mreyeros",
+      "contributions": [
+        "code",
+        "maintenance",
+        "review"
       ]
     }
   ]
