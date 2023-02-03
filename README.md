@@ -19,7 +19,7 @@ The following features are supported in this current version:
 
 To deploy all the resources in your Azure subscription, just click on the **Deploy to Azure** button
 
-<a href="https://portal.azure.com/?WT.mc_id=dotnet-0000-frbouche#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FFBoucher%2FAzUnzipEverything%2Fmain%2Fdeployment%2FdeployAzure.json?WT.mc_id=cloud5mins-github-frbouche" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/?WT.mc_id=dotnet-0000-frbouche#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FFBoucher%2FAzUnzipEverything%2Fmain%2Fdeployment%2FdeployAzure.json?WT.mc_id=cloud5mins-github-frbouche" target="_blank"><img src="https://aka.ms/deploytoazurebutton"/></a>
 
 Fill-up the form and voila! It will be automatically deployed in your Azure subscription. If you don't own an Azure subscription already, you can create your **free** account today. It comes with 200$ credit, so you can experience almost everything without spending a dime. 
 [Create your free Azure account today](https://azure.microsoft.com/free?WT.mc_id=dotnet-0000-frbouche)
@@ -48,6 +48,15 @@ Once [deployed](https://github.com/FBoucher/AzUnzipEverything#how-to-deploy), op
 1. After a few second the files you uploaded will be Unzipped into the blob storage container **output-files**.
 
 
+## Run Locally & DevContainer
+
+You can run the Azure Function locally or in a dev Container (files provided in folder .devcontainer). 
+You will need:
+- a `local.settings.json` file at the root. You can renamed and update local.settings.example.json or use it as template.
+- a storage account in Azure or using the emulator
+- a KeyVault with a secret `ZipPassword`.
+
+
 ## Continuous Integration (CI)
 
 As you can see by the status badge [![Build Status](https://dev.azure.com/cloud5mins/AzUnzipEverything/_apis/build/status/FBoucher.AzUnzipEverything?branchName=main)](https://dev.azure.com/cloud5mins/AzUnzipEverything/_build/latest?definitionId=23&branchName=main) at the top of the page this project is automatically build at every push. 
@@ -64,15 +73,6 @@ In this video, I show you how to write an Azure Resource Manager (#ARM) template
 
 There is also a **written version** if you prefer reading: http://www.frankysnotes.com/2019/07/four-ways-to-deploy-your-azure-function.html
 
-
-
-## TODOs
-
-A GitKraken [Glo board](https://app.gitkraken.com/glo/board/XRYx_9FgZwAVbri7) is also available.
-
-- [X] Add Support for .rar (Thank you @mreyeros)
-- [X] Add ARM template
-- [X] Add a Deploy to Azure button
 
 ## More details
 
