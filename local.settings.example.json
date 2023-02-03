@@ -1,0 +1,12 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "AzureWebJobsStorageConnectionStringValue",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "cloud5mins_storage":"STORAGE_CONNECTION_STRING",
+        "destinationStorage":"STORAGE_CONNECTION_STRING",
+        "destinationContainer":"output-files",
+        "KeyVaultUri":"https://",
+        "ZipPassword":"A_PASSWORD"
+    }
+}
