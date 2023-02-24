@@ -71,16 +71,12 @@
         "siteConfig": {
           "appSettings": [
             {
-              "name": "AzureWebJobsDashboard",
-              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('funcStorageName'), ';AccountKey=', listKeys(variables('funcStorageName'),'2015-05-01-preview').key1)]"
-            },
-            {
               "name": "AzureWebJobsStorage",
-              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('funcStorageName'), ';AccountKey=', listKeys(variables('funcStorageName'),'2015-05-01-preview').key1)]"
+              "value": "[concat('DefaultEndpointsProtocol=https;EndpointSuffix=', replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('funcStorageName')), '2016-01-01').primaryEndpoints.blob, concat('https://', variables('funcStorageName'), '.blob.'),''),'/',''),';AccountName=', variables('funcStorageName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts/', variables('funcStorageName')),'2016-01-01').keys[0].value)]"
             },
             {
               "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('funcStorageName'), ';AccountKey=', listKeys(variables('funcStorageName'),'2015-05-01-preview').key1)]"
+              "value": "[concat('DefaultEndpointsProtocol=https;EndpointSuffix=', replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('funcStorageName')), '2016-01-01').primaryEndpoints.blob, concat('https://', variables('funcStorageName'), '.blob.'),''),'/',''),';AccountName=', variables('funcStorageName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts/', variables('funcStorageName')),'2016-01-01').keys[0].value)]"
             },
             {
               "name": "WEBSITE_CONTENTSHARE",
@@ -96,11 +92,11 @@
             },
             {
               "name": "cloud5mins_storage",
-              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('fileStorageName'), ';AccountKey=', listKeys(variables('fileStorageName'),'2015-05-01-preview').key1)]"
+              "value": "[concat('DefaultEndpointsProtocol=https;EndpointSuffix=', replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('fileStorageName')), '2016-01-01').primaryEndpoints.blob, concat('https://', variables('fileStorageName'), '.blob.'),''),'/',''),';AccountName=', variables('fileStorageName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts/', variables('fileStorageName')),'2016-01-01').keys[0].value)]"
             },
             {
               "name": "destinationStorage",
-              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('fileStorageName'), ';AccountKey=', listKeys(variables('fileStorageName'),'2015-05-01-preview').key1)]"
+              "value": "[concat('DefaultEndpointsProtocol=https;EndpointSuffix=', replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('fileStorageName')), '2016-01-01').primaryEndpoints.blob, concat('https://', variables('fileStorageName'), '.blob.'),''),'/',''),';AccountName=', variables('fileStorageName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts/', variables('fileStorageName')),'2016-01-01').keys[0].value)]"
             },
             {
               "name": "destinationContainer",
