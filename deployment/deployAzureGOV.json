@@ -63,7 +63,8 @@
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms',variables('serverFarmName'))]",
         "[resourceId('Microsoft.Storage/storageAccounts', variables('funcStorageName'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('fileStorageName'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('fileStorageName'))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('KeyVaultName'))]"
       ],
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverFarmName'))]",
